@@ -1,0 +1,7 @@
+baseURL = 'https://georgenixon.co.uk/'
+locale = 'en-us'
+title = 'George Nixon'
+theme = 'PaperMod'
+
+[params]
+  description = "Things I've figured out, so you don't have to. Or that an LLM figured out with me, and I'm stealing the credit."

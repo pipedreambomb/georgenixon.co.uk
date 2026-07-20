@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Meta on George Nixon</title>
+    <link>https://georgenixon.co.uk/tags/meta/</link>
+    <description>Recent content in Meta on George Nixon</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Jul 2026 09:00:00 +0100</lastBuildDate>
+    <atom:link href="https://georgenixon.co.uk/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome</title>
+      <link>https://georgenixon.co.uk/posts/welcome/</link>
+      <pubDate>Sat, 18 Jul 2026 09:00:00 +0100</pubDate>
+      <guid>https://georgenixon.co.uk/posts/welcome/</guid>
+      <description>&lt;p&gt;Hello, and welcome.&lt;/p&gt;
+&lt;p&gt;This is a place for practical fixes, small opinions, and things worked out with the help of LLMs. Expect short, useful posts — the kind of thing I&amp;rsquo;d otherwise leave in a scratch file and forget about: a fix for some annoying bug, an opinion I want to write down before I lose it, or a walkthrough of something I puzzled out with an LLM sitting next to me.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
