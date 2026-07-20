@@ -1,4 +1,4 @@
-baseURL = 'https://georgenixon.co.uk/'
+baseURL = '/'
 languageCode = 'en-us'
 theme = 'terminal'
 paginate = 5
