@@ -13,6 +13,6 @@ paginate = 5
     title = "George Nixon"
     [languages.en.params]
       subtitle = "Things I've figured out, so you don't have to. Or that an LLM figured out with me, and I'm stealing the credit."
-      [[languages.en.params.logo]]
-        logoText = "$ cd /home/george"
-        logoHomeLink = "/"
+    [languages.en.params.logo]
+      logoText = "$ cd /home/george"
+      logoHomeLink = "/"
