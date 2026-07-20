@@ -1,14 +1,18 @@
 baseURL = 'https://georgenixon.co.uk/'
-locale = 'en-us'
-title = 'George Nixon'
-theme = 'PaperMod'
+languageCode = 'en-us'
+theme = 'terminal'
+paginate = 5
 
 [params]
-  description = "Things I've figured out, so you don't have to. Or that an LLM figured out with me, and I'm stealing the credit."
+  contentTypeName = "posts"
+  themeColor = "orange"
+  showMenuItems = 2
 
-[params.assets]
-  favicon = "/favicon.ico"
-  favicon16x16 = "/favicon-16x16.png"
-  favicon32x32 = "/favicon-32x32.png"
-  apple_touch_icon = "/apple-touch-icon.png"
-  safari_pinned_tab = "/safari-pinned-tab.svg"
+[languages]
+  [languages.en]
+    title = "George Nixon"
+    [languages.en.params]
+      subtitle = "Things I've figured out, so you don't have to. Or that an LLM figured out with me, and I'm stealing the credit."
+      [[languages.en.params.logo]]
+        logoText = "$ cd /home/george"
+        logoHomeLink = "/"
