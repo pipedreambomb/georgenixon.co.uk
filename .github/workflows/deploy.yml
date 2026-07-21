@@ -24,14 +24,9 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy via SSH (rsync)
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: "172.96.187.201"
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          rsync -rlgoDzvc -i --delete -e "ssh -vvv -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa" public/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_TARGET"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: georgenixon.co.uk
