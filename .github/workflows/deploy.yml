@@ -34,4 +34,4 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          rsync -rlgoDzvc -i --delete -e "ssh -vvv -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" public/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_TARGET"
+          rsync -rlgoDzvc -i --delete -e "ssh -vvv -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-rsa -o HostKeyAlgorithms=+ssh-rsa" public/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_TARGET"
