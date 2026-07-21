@@ -25,12 +25,12 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: ./public/
-          server-dir: ./public_html/
+          port: 22
+          local_path: './public/*'
+          remote_path: 'public_html'
