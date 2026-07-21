@@ -3,7 +3,7 @@ name: Deploy Hugo site to HawkHost
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - master
 
 jobs:
   deploy:
@@ -12,8 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -24,9 +24,14 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: georgenixon.co.uk
+      - name: Deploy via SSH (rsync)
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H 172.96.187.201 >> ~/.ssh/known_hosts
+          rsync -rlgoDzvc --delete -e "ssh -i ~/.ssh/deploy_key" public/ "$REMOTE_USER@172.96.187.201:$REMOTE_TARGET"
