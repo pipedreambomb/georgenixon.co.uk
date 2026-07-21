@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -24,14 +25,12 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy via SSH (rsync)
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H 172.96.187.201 >> ~/.ssh/known_hosts
-          rsync -rlgoDzvc --delete -e "ssh -i ~/.ssh/deploy_key" public/ "$REMOTE_USER@172.96.187.201:$REMOTE_TARGET"
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 22
+          local_path: './public/*'
+          remote_path: 'public_html'
