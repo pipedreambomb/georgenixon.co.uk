@@ -34,5 +34,4 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "$REMOTE_HOST" >> ~/.ssh/known_hosts
-          rsync -rlgoDzvc -i --delete -e "ssh -i ~/.ssh/deploy_key" public/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_TARGET"
+          rsync -rlgoDzvc -i --delete -e "ssh -vvv -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" public/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_TARGET"
