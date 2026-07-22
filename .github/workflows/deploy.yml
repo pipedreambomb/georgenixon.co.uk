@@ -33,4 +33,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./public/
-          server-dir: ./public_html/
+          server-dir: ./public_html/georgenixon.co.uk/
